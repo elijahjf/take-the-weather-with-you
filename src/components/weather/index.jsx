@@ -10,7 +10,7 @@ export default function Weather() {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=67692539f53f151163778489e5f73501`
+        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=67692539f53f151163778489e5f73501&units=metric`
       );
 
       const data = await response.json();
@@ -64,7 +64,7 @@ export default function Weather() {
           <div className="date">
             <span>{getCurrentData()}</span>
           </div>
-          <div className="temp">{weatherData?.main?.temp}</div>
+          <div className="temp">{weatherData?.main?.temp}&#8451;</div>
           <p className="description">
             {weatherData && weatherData.weather && weatherData.weather[0]
               ? weatherData.weather[0].description
