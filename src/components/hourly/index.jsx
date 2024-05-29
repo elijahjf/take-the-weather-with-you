@@ -93,10 +93,6 @@ export default function Hourly() {
                 <p className="humidity">{weatherData?.main?.humidity}%</p>
                 <p>Humidity</p>
               </div>
-              <div>
-                <p className="humidity">{weatherData?.main?.humidity}%</p>
-                <p>Humidity</p>
-              </div>
             </div>
           </div>
         </div>
