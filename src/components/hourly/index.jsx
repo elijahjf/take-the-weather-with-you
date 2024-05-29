@@ -7,7 +7,7 @@
 import { useEffect, useState } from "react";
 import Search from "../search";
 
-export default function Weather() {
+export default function Hourly() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
@@ -16,7 +16,7 @@ export default function Weather() {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=67692539f53f151163778489e5f73501&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${param}&appid=67692539f53f151163778489e5f73501&units=metric`
       );
 
       const data = await response.json();
@@ -89,6 +89,10 @@ export default function Weather() {
               </div>
             </div>
             <div className="column">
+              <div>
+                <p className="humidity">{weatherData?.main?.humidity}%</p>
+                <p>Humidity</p>
+              </div>
               <div>
                 <p className="humidity">{weatherData?.main?.humidity}%</p>
                 <p>Humidity</p>
