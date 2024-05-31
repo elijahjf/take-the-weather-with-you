@@ -25,11 +25,9 @@ const Wind = ({ windSpeed, windDeg }) => {
   const windDirection = compassDirections[windIndex];
 
   return (
-    <div className="wind-info">
-      <p className="wind-speed">
-        {windSpeed ? `${windSpeed.toFixed(1)} km/h` : ""}
-        {windDirection ? ` ${windDirection}` : ""}
-      </p>
+    <div className="wind-speed">
+      {windSpeed ? `${windSpeed.toFixed(1)} km/h` : ""}
+      {windDirection ? ` ${windDirection}` : ""}
     </div>
   );
 };

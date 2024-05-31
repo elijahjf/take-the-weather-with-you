@@ -99,7 +99,7 @@ export default function Weather() {
   console.log(weatherData);
 
   return (
-    <div>
+    <div className="app">
       <Search
         search={search}
         setSearch={setSearch}
@@ -117,6 +117,7 @@ export default function Weather() {
           <div className="date">
             <span>{getCurrentData()}</span>
           </div>
+          {weatherData && getWeatherIcon(weatherData)}
           <div className="temp-div">
             <div className="min-max">Min</div>
             <div className="temp">
@@ -126,7 +127,6 @@ export default function Weather() {
             <div className="temp">
               {Math.round(weatherData?.main?.temp_max)}&#8451;
             </div>
-            {weatherData && getWeatherIcon(weatherData)}
           </div>
           <p className="description">
             {weatherData && weatherData.weather && weatherData.weather[0]
@@ -134,32 +134,28 @@ export default function Weather() {
               : ""}
           </p>
           <div className="weather-info">
-            <div className="column">
-              <div>
-                <p className="feels-like">
-                  {weatherData && (
-                    <FeelsLike feelsLikeTemp={weatherData.main.feels_like} />
-                  )}
-                </p>
-                <p>Feels Like</p>
+            <div className="condition-column">
+              <div className="feels-like">
+                {weatherData && (
+                  <FeelsLike feelsLikeTemp={weatherData.main.feels_like} />
+                )}
               </div>
+              <p>Feels Like</p>
             </div>
-            <div className="column">
-              <div>
-                <p className="wind">
-                  {weatherData && (
-                    <Wind
-                      windSpeed={weatherData.wind?.speed * 3.6} // convert to km per hr
-                      windDeg={weatherData.wind?.deg}
-                    />
-                  )}
-                </p>
-                <p>Wind</p>
+            <div className="condition-column">
+              <div className="wind">
+                {weatherData && (
+                  <Wind
+                    windSpeed={weatherData.wind?.speed * 3.6} // convert to km per hr
+                    windDeg={weatherData.wind?.deg}
+                  />
+                )}
               </div>
+              <p>Wind</p>
             </div>
-            <div className="column">
+            <div className="condition-column">
               <div>
-                <p className="humidity">{weatherData?.main?.humidity}%</p>
+                <div className="humidity">{weatherData?.main?.humidity}%</div>
                 <p>Humidity</p>
               </div>
             </div>
