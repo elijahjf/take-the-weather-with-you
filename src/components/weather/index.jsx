@@ -77,9 +77,13 @@ export default function Weather() {
           </div>
           <div className="temp-div">
             <div className="min-max">Min</div>
-            <div className="temp">{weatherData?.main?.temp_min}&#8451;</div>
+            <div className="temp">
+              {Math.round(weatherData?.main?.temp_min)}&#8451;
+            </div>
             <div className="min-max">Max</div>
-            <div className="temp">{weatherData?.main?.temp_max}&#8451;</div>
+            <div className="temp">
+              {Math.round(weatherData?.main?.temp_max)}&#8451;
+            </div>
             {weatherData && getWeatherIcon(weatherData)}
           </div>
           <p className="description">
