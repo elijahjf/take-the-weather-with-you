@@ -1,7 +1,7 @@
 import React from "react";
 
 const WeatherIcons = ({ iconCode, windDirection }) => {
-  const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+  const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
   const rotationStyle = {
     transform: `rotate(${windDirection}deg)`,
