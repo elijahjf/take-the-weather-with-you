@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Search from "../search";
+import WeatherIcons from "../WeatherIcons";
 
 export default function Weather() {
   const [search, setSearch] = useState("");
@@ -39,6 +40,14 @@ export default function Weather() {
     });
   }
 
+  function getWeatherIcon(weatherData) {
+    if (!weatherData || !weatherData.weather || !weatherData.weather[0]) {
+      return null;
+    }
+    const iconCode = weatherData.weather[0].icon;
+    return <WeatherIcons iconCode={iconCode} />;
+  }
+
   useEffect(() => {
     fetchWeatherData("Perth");
   }, []);
@@ -69,12 +78,7 @@ export default function Weather() {
             <div className="temp">{weatherData?.main?.temp_min}&#8451;</div>
             <div className="min-max">Max</div>
             <div className="temp">{weatherData?.main?.temp_max}&#8451;</div>
-            {weatherData && weatherData.weather && weatherData.weather[0] && (
-              <img
-                src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
-                alt={weatherData.weather[0].description}
-              />
-            )}
+            {weatherData && getWeatherIcon(weatherData)}
           </div>
           <p className="description">
             {weatherData && weatherData.weather && weatherData.weather[0]
