@@ -1,4 +1,3 @@
-// WeatherIcons.jsx
 import React from "react";
 
 const WeatherIcons = ({ iconCode, windDirection }) => {
