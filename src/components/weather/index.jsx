@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Search from "../search";
 import WeatherIcons from "../WeatherIcons";
 import Wind from "../Wind";
+import FeelsLike from "../FeelsLike";
 
 export default function Weather() {
   const [search, setSearch] = useState("");
@@ -87,6 +88,16 @@ export default function Weather() {
               : ""}
           </p>
           <div className="weather-info">
+            <div className="column">
+              <div>
+                <p className="feels-like">
+                  {weatherData && (
+                    <FeelsLike feelsLikeTemp={weatherData.main.feels_like} />
+                  )}
+                </p>
+                <p>Feels Like</p>
+              </div>
+            </div>
             <div className="column">
               <div>
                 <p className="wind">
