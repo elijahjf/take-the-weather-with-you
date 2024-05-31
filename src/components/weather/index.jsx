@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Search from "../search";
 import WeatherIcons from "../WeatherIcons";
+import Wind from "../Wind";
 
 export default function Weather() {
   const [search, setSearch] = useState("");
@@ -88,8 +89,15 @@ export default function Weather() {
           <div className="weather-info">
             <div className="column">
               <div>
-                <p className="wind">{weatherData?.wind?.speed}</p>
-                <p>Wind Speed</p>
+                <p className="wind">
+                  {weatherData && (
+                    <Wind
+                      windSpeed={weatherData.wind?.speed * 3.6} // convert to km per hr
+                      windDeg={weatherData.wind?.deg}
+                    />
+                  )}
+                </p>
+                <p>Wind</p>
               </div>
             </div>
             <div className="column">
