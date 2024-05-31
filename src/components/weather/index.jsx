@@ -64,11 +64,17 @@ export default function Weather() {
           <div className="date">
             <span>{getCurrentData()}</span>
           </div>
-          <div className="temp-div"> 
+          <div className="temp-div">
             <div className="min-max">Min</div>
             <div className="temp">{weatherData?.main?.temp_min}&#8451;</div>
             <div className="min-max">Max</div>
             <div className="temp">{weatherData?.main?.temp_max}&#8451;</div>
+            {weatherData && weatherData.weather && weatherData.weather[0] && (
+              <img
+                src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+                alt={weatherData.weather[0].description}
+              />
+            )}
           </div>
           <p className="description">
             {weatherData && weatherData.weather && weatherData.weather[0]
